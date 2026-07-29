@@ -1,9 +1,6 @@
 package com.agricultura.agricultura.track;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 
@@ -15,9 +12,10 @@ public class Plot {
     private String name;
 
     private Double size;
-
+    @Enumerated(EnumType.STRING)
     private PlotType type;
 
+    @Enumerated(EnumType.STRING)
     private PlotStatus status;
 
     public Plot() {
