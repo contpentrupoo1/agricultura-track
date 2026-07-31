@@ -6,3 +6,4 @@ public enum PlotType {
     ORCHARD,
     RAISED_BED
 }
+
