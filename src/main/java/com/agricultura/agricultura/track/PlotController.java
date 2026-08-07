@@ -9,14 +9,19 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/plots")
-@RequiredArgsConstructor
 public class PlotController {
 
     private final PlotService plotService;
 
+    public PlotController(PlotService plotService) {
+        this.plotService = plotService;
+    }
+
     @GetMapping
-    public ResponseEntity<Page<PlotDto>> getPlots(@RequestParam(name = "page") int page, @RequestParam(name = "size") int size,
-            @RequestParam(name = "sortcategory") String sortcategory) {
+    public ResponseEntity<Page<PlotDto>> getPlots(
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "10") int size,
+            @RequestParam(name = "sortcategory", defaultValue = "id") String sortcategory) {
 
         return ResponseEntity.ok().body(plotService.getAllPlots(page, size, sortcategory));
     }
