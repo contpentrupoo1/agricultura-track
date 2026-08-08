@@ -1,5 +1,6 @@
-package com.agricultura.agricultura.track;
+package com.agricultura.agricultura.track.Repository;
 
+import com.agricultura.agricultura.track.Entity.ExpenseLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

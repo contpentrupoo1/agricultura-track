@@ -1,4 +1,4 @@
-package com.agricultura.agricultura.track;
+package com.agricultura.agricultura.track.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

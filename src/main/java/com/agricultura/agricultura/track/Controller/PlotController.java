@@ -1,11 +1,12 @@
-package com.agricultura.agricultura.track;
+package com.agricultura.agricultura.track.Controller;
 
 
+import com.agricultura.agricultura.track.Dto.PlotDto;
+import com.agricultura.agricultura.track.Service.PlotService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/plots")

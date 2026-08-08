@@ -1,4 +1,4 @@
-package com.agricultura.agricultura.track;
+package com.agricultura.agricultura.track.Entity;
 
 public enum PlotType {
     OPEN_FIELD,

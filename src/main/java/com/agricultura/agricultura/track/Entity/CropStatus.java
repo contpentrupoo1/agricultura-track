@@ -1,4 +1,4 @@
-package com.agricultura.agricultura.track;
+package com.agricultura.agricultura.track.Entity;
 
 public enum CropStatus {
     PLANNED,      // The crop is budgeted and scheduled, but not yet in the ground.

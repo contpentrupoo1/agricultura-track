@@ -1,5 +1,7 @@
-package com.agricultura.agricultura.track;
+package com.agricultura.agricultura.track.Mapper;
 
+import com.agricultura.agricultura.track.Dto.PlotDto;
+import com.agricultura.agricultura.track.Entity.Plot;
 import org.springframework.stereotype.Component;
 
 @Component
