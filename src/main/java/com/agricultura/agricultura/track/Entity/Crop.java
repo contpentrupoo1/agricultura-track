@@ -5,17 +5,18 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-
+@Table(name = "crop")
 public class Crop {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "plotida")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "plotida", nullable = false)
     private Plot plot;
 
+    @Column(nullable = false)
     private String name;
 
     private LocalDate start;
