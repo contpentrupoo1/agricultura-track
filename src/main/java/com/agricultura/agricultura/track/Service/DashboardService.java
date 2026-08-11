@@ -1,0 +1,43 @@
+package com.agricultura.agricultura.track.Service;
+
+import com.agricultura.agricultura.track.Dto.DashboardDto;
+import com.agricultura.agricultura.track.Entity.ExpenseLog;
+import com.agricultura.agricultura.track.Repository.CropRepository;
+import com.agricultura.agricultura.track.Repository.ExpenseLogRepository;
+import com.agricultura.agricultura.track.Repository.PlotRepository;
+import com.agricultura.agricultura.track.Repository.WorkerRepository;
+
+import java.util.List;
+
+public class DashboardService {
+   private final PlotRepository plotRepository;
+   private final CropRepository cropRepository;
+
+   private final WorkerRepository workerRepository;
+   private final ExpenseLogRepository expenseLogRepository;
+
+   public DashboardService (PlotRepository plotRepository,
+                            CropRepository cropRepository,
+                            WorkerRepository workerRepository,
+                            ExpenseLogRepository expenseLogRepository)
+   {
+       this.plotRepository = plotRepository;
+       this.cropRepository = cropRepository;
+       this.workerRepository = workerRepository;
+       this.expenseLogRepository = expenseLogRepository;
+   }
+
+   public DashboardDto getDashboardSummary() {
+       long plotCount = plotRepository.count();
+       long workerCount = workerRepository.count();
+       long cropCount = cropRepository.count();
+       List<ExpenseLog> allExpenses = expenseLogRepository.findAll();
+       double totalSpent = 0.0;
+       for(ExpenseLog value : allExpenses) {
+           totalSpent += value.getTotalcost();
+       }
+
+       return new DashboardDto(plotCount, workerCount, cropCount, totalSpent);
+   }
+
+}
