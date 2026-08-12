@@ -6,9 +6,11 @@ import com.agricultura.agricultura.track.Repository.CropRepository;
 import com.agricultura.agricultura.track.Repository.ExpenseLogRepository;
 import com.agricultura.agricultura.track.Repository.PlotRepository;
 import com.agricultura.agricultura.track.Repository.WorkerRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DashboardService {
    private final PlotRepository plotRepository;
    private final CropRepository cropRepository;

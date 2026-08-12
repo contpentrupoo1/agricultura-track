@@ -24,17 +24,14 @@ public class InventoryController {
             @RequestParam(name = "size", defaultValue = "10") int size,
             @RequestParam(name = "sortcategory", defaultValue = "id") String sortCategory) {
 
-        // Asks the service for the data and returns a 200 OK
         return ResponseEntity.ok(inventoryService.getAllInventory(page, size, sortCategory));
     }
 
     @PostMapping
     public ResponseEntity<Void> addInventory(@Valid @RequestBody InventoryDto dto) {
 
-        // Hands the validated DTO to the service to be saved
         inventoryService.createInventory(dto);
 
-        // Returns a 201 Created status
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

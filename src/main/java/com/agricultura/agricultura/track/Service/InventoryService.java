@@ -21,21 +21,16 @@ public class InventoryService {
     }
 
     public void createInventory(InventoryDto dto) {
-        // Convert the safe DTO into a real Database Entity
         Inventory inventory = inventoryMapper.toEntity(dto);
 
-        // Save it to PostgreSQL
         inventoryRepository.save(inventory);
     }
 
     public Page<InventoryDto> getAllInventory(int page, int size, String sortCategory) {
-        // Create the pagination and sorting instructions
         PageRequest pageRequest = PageRequest.of(page, size, Sort.by(sortCategory));
 
-        // Fetch the raw data from the database
         Page<Inventory> inventoryPage = inventoryRepository.findAll(pageRequest);
 
-        // Translate every item into a safe DTO before sending it to the Controller
         return inventoryPage.map(inventory -> inventoryMapper.toDto(inventory));
     }
 }

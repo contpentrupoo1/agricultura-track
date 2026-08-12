@@ -7,13 +7,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class ExpenseLogMapper {
 
-    // Map Entity to DTO
     public ExpenseLogDto toDto(ExpenseLog entity) {
         if (entity == null) {
             return null;
         }
 
-        // Safely extract IDs to prevent null pointer exceptions
         Long cropId = (entity.getCrop() != null) ? entity.getCrop().getId() : null;
         Long inventoryId = (entity.getInventory() != null) ? entity.getInventory().getId() : null;
 
@@ -28,7 +26,6 @@ public class ExpenseLogMapper {
         );
     }
 
-    // Map DTO to Entity
     public ExpenseLog toEntity(ExpenseLogDto dto) {
         if (dto == null) {
             return null;
@@ -41,7 +38,6 @@ public class ExpenseLogMapper {
         expenseLog.setTotalcost(dto.totalcost());
         expenseLog.setTimestamp(dto.timestamp());
 
-        // Note: Crop and Inventory are NOT set here. The Service will attach them!
         return expenseLog;
     }
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class WorkerMapper {
 
-    // Map Entity to DTO
     public WorkerDto toDto(Worker entity) {
         if (entity == null) {
             return null;
@@ -20,7 +19,6 @@ public class WorkerMapper {
         );
     }
 
-    // Map DTO to Entity
     public Worker toEntity(WorkerDto dto) {
         if (dto == null) {
             return null;

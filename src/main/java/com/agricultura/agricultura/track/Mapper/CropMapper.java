@@ -2,7 +2,9 @@ package com.agricultura.agricultura.track.Mapper;
 
 import com.agricultura.agricultura.track.Dto.CropDto;
 import com.agricultura.agricultura.track.Entity.Crop;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CropMapper {
 
     public CropDto toDto(Crop entity) {

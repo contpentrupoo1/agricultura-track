@@ -21,7 +21,6 @@ public class ExpenseLogService {
     private final InventoryRepository inventoryRepository;
     private final ExpenseLogMapper expenseLogMapper;
 
-    // Inject all required repositories
     public ExpenseLogService(ExpenseLogRepository expenseLogRepository,
                              CropRepository cropRepository,
                              InventoryRepository inventoryRepository,
@@ -33,24 +32,20 @@ public class ExpenseLogService {
     }
 
     public void createExpenseLog(ExpenseLogDto dto) {
-        // Map basic fields
         ExpenseLog expenseLog = expenseLogMapper.toEntity(dto);
 
-        // Safely find and attach the Crop if a cropId was provided
         if (dto.cropId() != null) {
             Crop crop = cropRepository.findById(dto.cropId())
                     .orElseThrow(() -> new RuntimeException("Crop not found with id: " + dto.cropId()));
             expenseLog.setCrop(crop);
         }
 
-        // Safely find and attach the Inventory item if an inventoryId was provided
         if (dto.inventoryId() != null) {
             Inventory inventory = inventoryRepository.findById(dto.inventoryId())
                     .orElseThrow(() -> new RuntimeException("Inventory not found with id: " + dto.inventoryId()));
             expenseLog.setInventory(inventory);
         }
 
-        // Save the fully assembled ExpenseLog
         expenseLogRepository.save(expenseLog);
     }
 
