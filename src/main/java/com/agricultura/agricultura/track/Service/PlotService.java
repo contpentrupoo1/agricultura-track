@@ -1,7 +1,9 @@
 package com.agricultura.agricultura.track.Service;
 
 import com.agricultura.agricultura.track.Dto.PlotDto;
+import com.agricultura.agricultura.track.Dto.PlotSummaryDto;
 import com.agricultura.agricultura.track.Entity.Plot;
+import com.agricultura.agricultura.track.Entity.PlotStatus;
 import com.agricultura.agricultura.track.Mapper.PlotMapper;
 import com.agricultura.agricultura.track.Repository.PlotRepository;
 import org.springframework.data.domain.Page;
@@ -55,6 +57,20 @@ public class PlotService {
         }
 
         return plotMapper.toDto(plotRepository.save(plot));
+    }
+
+    public void deletePlot(Long id) {
+        Plot plot = plotRepository.findById(id).orElseThrow(() -> new RuntimeException("Plot with id: " + id + " has not been found"));
+        plotRepository.delete(plot);
+    }
+
+    public PlotSummaryDto dashboardStatusSummary() {
+        Long activeCount = plotRepository.countByStatus(PlotStatus.ACTIVE);
+        Long fallowCount = plotRepository.countByStatus(PlotStatus.FALLOW);
+        Long preparationCount = plotRepository.countByStatus(PlotStatus.PREPARATION);
+        Long readyForHarvestCount = plotRepository.countByStatus(PlotStatus.READY_FOR_HARVEST);
+        Long totalCount = plotRepository.count();
+        return new PlotSummaryDto(activeCount, fallowCount, preparationCount, readyForHarvestCount, totalCount);
     }
 
 }

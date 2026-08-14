@@ -6,3 +6,4 @@ public enum PlotStatus {
     PREPARATION,
     READY_FOR_HARVEST
 }
+

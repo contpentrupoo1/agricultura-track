@@ -1,6 +1,7 @@
 package com.agricultura.agricultura.track.Controller;
 
 import com.agricultura.agricultura.track.Dto.PlotDto;
+import com.agricultura.agricultura.track.Dto.PlotSummaryDto;
 import com.agricultura.agricultura.track.Service.PlotService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -41,6 +42,22 @@ public class PlotController {
     public ResponseEntity<PlotDto>  updatePlot(@PathVariable Long id, @RequestBody PlotDto dto) {
         return ResponseEntity.ok().body(plotService.updatePlot(id, dto));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePlot(@PathVariable Long id) {
+        plotService.deletePlot(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("/summary")
+    public ResponseEntity<PlotSummaryDto> dashboardStatusSummary() {
+        return ResponseEntity.ok().body(plotService.dashboardStatusSummary());
+    }
+
+//    @PostMapping("/plots/{id}/crops")
+//    public ResponseEntity<PlotDto> test () {
+//        return ResponseEntity.status(HttpStatus.OK).build();
+//    }
 
 
 
