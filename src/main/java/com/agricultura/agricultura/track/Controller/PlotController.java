@@ -54,12 +54,5 @@ public class PlotController {
         return ResponseEntity.ok().body(plotService.dashboardStatusSummary());
     }
 
-//    @PostMapping("/plots/{id}/crops")
-//    public ResponseEntity<PlotDto> test () {
-//        return ResponseEntity.status(HttpStatus.OK).build();
-//    }
-
-
-
 
 }
