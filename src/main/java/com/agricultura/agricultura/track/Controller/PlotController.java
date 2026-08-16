@@ -54,5 +54,5 @@ public class PlotController {
         return ResponseEntity.ok().body(plotService.dashboardStatusSummary());
     }
 
-
 }
+
