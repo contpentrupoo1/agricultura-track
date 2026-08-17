@@ -19,6 +19,8 @@ public class Inventory {
     @Enumerated(EnumType.STRING)
     private Unit unittype;
 
+    private Double currentStock;
+
     public Long getId() {
         return id;
     }
@@ -57,6 +59,14 @@ public class Inventory {
 
     public void setUnittype(Unit unittype) {
         this.unittype = unittype;
+    }
+
+    public Double getCurrentStock() {
+        return currentStock;
+    }
+
+    public void setCurrentStock(Double currentStock) {
+        this.currentStock = currentStock;
     }
 
     public Inventory() {

@@ -20,6 +20,10 @@ public class ExpenseLog {
     @JoinColumn(name = "inventory_id")
     private Inventory inventory;
 
+    @ManyToOne
+    @JoinColumn(name = "worker_id")
+    private Worker worker;
+
     private String productionphase;
 
     private Double quantityused;
@@ -85,5 +89,13 @@ public class ExpenseLog {
     }
 
     public ExpenseLog() {
+    }
+
+    public Worker getWorker() {
+        return worker;
+    }
+
+    public void setWorker(Worker worker) {
+        this.worker = worker;
     }
 }

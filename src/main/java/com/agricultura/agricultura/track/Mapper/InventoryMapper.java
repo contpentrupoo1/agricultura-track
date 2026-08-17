@@ -17,7 +17,8 @@ public class InventoryMapper {
                 entity.getName(),
                 entity.getCategory(),
                 entity.getUnitcost(),
-                entity.getUnittype()
+                entity.getUnittype(),
+                entity.getCurrentStock()
         );
     }
 
@@ -32,7 +33,9 @@ public class InventoryMapper {
         inventory.setCategory(dto.category());
         inventory.setUnitcost(dto.unitcost());
         inventory.setUnittype(dto.unittype());
+        inventory.setCurrentStock(dto.currentStock());
 
         return inventory;
     }
+
 }

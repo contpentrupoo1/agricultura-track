@@ -2,6 +2,7 @@ package com.agricultura.agricultura.track.Service;
 
 import com.agricultura.agricultura.track.Dto.DashboardDto;
 import com.agricultura.agricultura.track.Entity.ExpenseLog;
+import com.agricultura.agricultura.track.Entity.Plot;
 import com.agricultura.agricultura.track.Repository.CropRepository;
 import com.agricultura.agricultura.track.Repository.ExpenseLogRepository;
 import com.agricultura.agricultura.track.Repository.PlotRepository;
@@ -18,15 +19,26 @@ public class DashboardService {
    private final WorkerRepository workerRepository;
    private final ExpenseLogRepository expenseLogRepository;
 
+   private final PlotService plotService;
+   private final CropService cropService;
+
+   private final InventoryService inventoryService;
+
    public DashboardService (PlotRepository plotRepository,
                             CropRepository cropRepository,
                             WorkerRepository workerRepository,
-                            ExpenseLogRepository expenseLogRepository)
+                            ExpenseLogRepository expenseLogRepository,
+                            PlotService plotService,
+                            CropService cropService,
+                            InventoryService inventoryService)
    {
        this.plotRepository = plotRepository;
        this.cropRepository = cropRepository;
        this.workerRepository = workerRepository;
        this.expenseLogRepository = expenseLogRepository;
+       this.plotService = plotService;
+       this.cropService = cropService;
+       this.inventoryService = inventoryService;
    }
 
    public DashboardDto getDashboardSummary() {

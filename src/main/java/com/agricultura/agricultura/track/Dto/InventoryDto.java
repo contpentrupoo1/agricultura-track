@@ -19,5 +19,8 @@ public record InventoryDto(
         Double unitcost,
 
         @NotNull(message = "Unit type is required")
-        Unit unittype
+        Unit unittype,
+
+        @PositiveOrZero(message = "Current stock cannot be negative")
+        Double currentStock
 ) {}

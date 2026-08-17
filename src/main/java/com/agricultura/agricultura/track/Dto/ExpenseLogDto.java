@@ -10,6 +10,8 @@ public record ExpenseLogDto(
 
         Long inventoryId,
 
+        Long workerId,
+
         String productionphase,
 
         @PositiveOrZero(message = "Quantity used cannot be negative")

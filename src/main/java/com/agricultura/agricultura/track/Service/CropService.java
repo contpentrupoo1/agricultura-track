@@ -12,6 +12,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CropService {
     private final CropRepository cropRepository;
@@ -39,6 +41,10 @@ public class CropService {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.by(sortCategory));
         Page<Crop> crops = cropRepository.findAll(pageRequest);
         return crops.map(cropMapper::toDto);
+    }
+
+    public List<CropDto> getCropsByPlot(Long id) {
+        return cropRepository.findByPlotId(id).stream().map(cropMapper::toDto).toList();
     }
 
 

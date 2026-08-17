@@ -4,10 +4,12 @@ import com.agricultura.agricultura.track.Dto.ExpenseLogDto;
 import com.agricultura.agricultura.track.Entity.Crop;
 import com.agricultura.agricultura.track.Entity.ExpenseLog;
 import com.agricultura.agricultura.track.Entity.Inventory;
+import com.agricultura.agricultura.track.Entity.Worker;
 import com.agricultura.agricultura.track.Mapper.ExpenseLogMapper;
 import com.agricultura.agricultura.track.Repository.CropRepository;
 import com.agricultura.agricultura.track.Repository.ExpenseLogRepository;
 import com.agricultura.agricultura.track.Repository.InventoryRepository;
+import com.agricultura.agricultura.track.Repository.WorkerRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -20,15 +22,18 @@ public class ExpenseLogService {
     private final CropRepository cropRepository;
     private final InventoryRepository inventoryRepository;
     private final ExpenseLogMapper expenseLogMapper;
+    private final WorkerRepository workerRepository;
 
     public ExpenseLogService(ExpenseLogRepository expenseLogRepository,
                              CropRepository cropRepository,
                              InventoryRepository inventoryRepository,
-                             ExpenseLogMapper expenseLogMapper) {
+                             ExpenseLogMapper expenseLogMapper,
+                             WorkerRepository workerRepository) {
         this.expenseLogRepository = expenseLogRepository;
         this.cropRepository = cropRepository;
         this.inventoryRepository = inventoryRepository;
         this.expenseLogMapper = expenseLogMapper;
+        this.workerRepository = workerRepository;
     }
 
     public void createExpenseLog(ExpenseLogDto dto) {
@@ -44,6 +49,12 @@ public class ExpenseLogService {
             Inventory inventory = inventoryRepository.findById(dto.inventoryId())
                     .orElseThrow(() -> new RuntimeException("Inventory not found with id: " + dto.inventoryId()));
             expenseLog.setInventory(inventory);
+        }
+
+        if (dto.workerId() != null) {
+            Worker worker = workerRepository.findById(dto.workerId())
+                    .orElseThrow(() -> new RuntimeException("Worker not found with id: " + dto.workerId()));
+            expenseLog.setWorker(worker);
         }
 
         expenseLogRepository.save(expenseLog);

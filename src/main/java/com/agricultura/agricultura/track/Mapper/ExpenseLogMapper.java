@@ -14,11 +14,13 @@ public class ExpenseLogMapper {
 
         Long cropId = (entity.getCrop() != null) ? entity.getCrop().getId() : null;
         Long inventoryId = (entity.getInventory() != null) ? entity.getInventory().getId() : null;
+        Long workerId = (entity.getWorker() != null) ? entity.getWorker().getId() : null;
 
         return new ExpenseLogDto(
                 entity.getId(),
                 cropId,
                 inventoryId,
+                workerId,
                 entity.getProductionphase(),
                 entity.getQuantityused(),
                 entity.getTotalcost(),
