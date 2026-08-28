@@ -33,4 +33,8 @@ public class InventoryService {
 
         return inventoryPage.map(inventory -> inventoryMapper.toDto(inventory));
     }
+
+    public InventoryDto getInventoryById(Long id) {
+        return inventoryMapper.toDto(inventoryRepository.findById(id).orElseThrow(() -> new RuntimeException ("Inventory with id: " + id + " has not been found")));
+    }
 }

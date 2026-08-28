@@ -39,6 +39,11 @@ public class CropController {
         return ResponseEntity.ok(cropService.getCropsByPlot(id));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<CropDto> getCropById (Long id) {
+        return ResponseEntity.ok(cropService.getCropById(id));
+    }
+
 
 
 }

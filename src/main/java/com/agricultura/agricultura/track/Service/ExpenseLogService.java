@@ -65,4 +65,8 @@ public class ExpenseLogService {
         Page<ExpenseLog> expensePage = expenseLogRepository.findAll(pageRequest);
         return expensePage.map(expenseLog -> expenseLogMapper.toDto(expenseLog));
     }
+
+    public ExpenseLogDto getExpenseLogById(Long id) {
+        return expenseLogMapper.toDto(expenseLogRepository.findById(id).orElseThrow(() -> new RuntimeException("Expense log with id: " + " has not been found")));
+    }
 }

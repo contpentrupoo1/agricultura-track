@@ -45,11 +45,12 @@ public class DashboardService {
        long plotCount = plotRepository.count();
        long workerCount = workerRepository.count();
        long cropCount = cropRepository.count();
-       List<ExpenseLog> allExpenses = expenseLogRepository.findAll();
-       double totalSpent = 0.0;
-       for(ExpenseLog value : allExpenses) {
-           totalSpent += value.getTotalcost();
-       }
+//       List<ExpenseLog> allExpenses = expenseLogRepository.findAll();
+//       double totalSpent = 0.0;
+//       for(ExpenseLog value : allExpenses) {
+//           totalSpent += value.getTotalcost();
+//       }
+       double totalSpent = expenseLogRepository.calculateTotalExpenses();
 
        return new DashboardDto(plotCount, workerCount, cropCount, totalSpent);
    }

@@ -34,4 +34,9 @@ public class InventoryController {
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<InventoryDto> getInventoryById(Long id) {
+        return ResponseEntity.ok(inventoryService.getInventoryById(id));
+    }
 }

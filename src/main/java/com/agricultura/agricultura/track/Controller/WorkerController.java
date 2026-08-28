@@ -32,4 +32,10 @@ public class WorkerController {
         workerService.createWorker(dto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<WorkerDto> getWorkerById (Long id) {
+        return ResponseEntity.ok(workerService.getWorkerById(id));
+    }
+
 }

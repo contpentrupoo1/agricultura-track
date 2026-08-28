@@ -47,6 +47,10 @@ public class CropService {
         return cropRepository.findByPlotId(id).stream().map(cropMapper::toDto).toList();
     }
 
+    public CropDto getCropById(Long id) {
+        return cropMapper.toDto(cropRepository.findById(id).orElseThrow(() -> new RuntimeException ("Crop with id: " + id + " has not been found")));
+    }
+
 
 }
 

@@ -32,4 +32,9 @@ public class ExpenseLogController {
         expenseLogService.createExpenseLog(dto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ExpenseLogDto> getExpenseLogById(Long id) {
+        return ResponseEntity.ok(expenseLogService.getExpenseLogById(id));
+    }
 }

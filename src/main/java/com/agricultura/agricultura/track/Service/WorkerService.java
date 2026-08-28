@@ -30,4 +30,10 @@ public class WorkerService {
         Page<Worker> workerPage = workerRepository.findAll(pageRequest);
         return workerPage.map(worker -> workerMapper.toDto(worker));
     }
+
+    public WorkerDto getWorkerById(Long id) {
+        return workerMapper.toDto(workerRepository.findById(id).orElseThrow(() -> new RuntimeException ("Worker with id: " + id + " has not been found")));
+    }
+
+
 }
